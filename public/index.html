@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Satranç</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="loginScreen" class="screen">
+            <div class="hero-section">
+                <div class="logo-container">
+                    <div class="chess-logo">♔</div>
+                    <h1>ChessMaster Online</h1>
+                    <p class="tagline">Dünyanın En Eski Strateji Oyunu</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Gerçek Zamanlı</h3>
+                        <p>Anlık hamle senkronizasyonu ile kesintisiz oyun deneyimi</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>Global Oyuncular</h3>
+                        <p>Dünyanın her yerinden rakiplerle karşılaşın</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3>Strateji Geliştirin</h3>
+                        <p>Zeka ve stratejinizi test edin, becerilerinizi geliştirin</p>
+                    </div>
+                </div>
+
+                <div class="game-description">
+                    <h2>Neden Satranç?</h2>
+                    <p>Satranç, 1500 yıllık geçmişi ile dünyanın en popüler strateji oyunudur. 
+                    Analitik düşünme, problem çözme ve stratejik planlama becerilerinizi geliştirirken, 
+                    aynı zamanda eğlenceli vakit geçirmenizi sağlar.</p>
+                    
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-number">1k+</span>
+                            <span class="stat-label">Aktif Oyuncu</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1500+</span>
+                            <span class="stat-label">Yıllık Geçmiş</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">Olası Hamle</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="play-section">
+                    <button id="playBtn" class="play-button">
+                        <span class="play-icon">🎮</span>
+                        Oyna
+                    </button>
+                    <p class="play-description">Hemen başlayın ve dünyanın her yerinden rakiplerle karşılaşın</p>
+                </div>
+                
+                <div class="login-section hidden" id="loginForm">
+                    <h3>Hemen Başlayın</h3>
+                    <p>Adınızı girin ve rakip arayışına başlayın</p>
+                    <div class="login-form">
+                        <input type="text" id="playerName" placeholder="Oyuncu adınızı girin" maxlength="20">
+                        <button id="findGameBtn">
+                            <span class="btn-icon">🎯</span>
+                            Rakip Bul
+                        </button>
+                    </div>
+                    <div class="login-tips">
+                        <small>💡 İpucu: Kısa ve akılda kalıcı bir isim seçin</small>
+                    </div>
+                    <button id="backBtn" class="back-button">
+                        <span>←</span> Geri Dön
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="waitingScreen" class="screen hidden">
+            <div class="waiting-container">
+                <div class="waiting-animation">
+                    <div class="chess-pieces-animation">
+                        <span class="animated-piece">♔</span>
+                        <span class="animated-piece">♛</span>
+                        <span class="animated-piece">♜</span>
+                    </div>
+                </div>
+                
+                <h2>Rakip Aranıyor...</h2>
+                <div class="spinner"></div>
+                
+                <div class="waiting-info">
+                    <p class="waiting-main">Size uygun bir rakip buluyoruz</p>
+                    <div class="waiting-tips">
+                        <div class="tip-item">
+                            <span class="tip-icon">⏱️</span>
+                            <span>Ortalama bekleme süresi: 30 saniye</span>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🎲</span>
+                            <span>Renk ataması rastgele yapılacak</span>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🤝</span>
+                            <span>Fair play kuralları geçerlidir</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="waiting-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <small>Eşleştirme algoritması çalışıyor...</small>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameScreen" class="screen hidden">
+            <div class="game-header">
+                <div class="player-info">
+                    <span id="opponentName">Rakip</span>
+                    <span id="opponentColor" class="color-indicator"></span>
+                </div>
+                <div class="turn-indicator">
+                    <span id="turnText">Sıra: Beyaz</span>
+                </div>
+                <div class="player-info">
+                    <span id="yourColor" class="color-indicator"></span>
+                    <span id="yourName">Sen</span>
+                </div>
+            </div>
+            
+            <div id="chessboard"></div>
+            
+            <div class="game-status">
+                <div id="statusText">Oyun başladı!</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

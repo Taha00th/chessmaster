@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "public/**": {
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/public/$1"
+    }
+  ]
+}
